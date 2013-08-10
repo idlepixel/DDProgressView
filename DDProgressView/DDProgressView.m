@@ -13,15 +13,13 @@
 
 @implementation DDProgressView
 
-@synthesize innerColor ;
-@synthesize outerColor ;
-@synthesize emptyColor ;
-@synthesize progress ;
-@synthesize preferredFrameHeight ;
-
 - (id)init
 {
-	return [self initWithFrame: CGRectZero] ;
+	self = [super init];
+    if (self) {
+        [self configure];
+    }
+    return self;
 }
 
 - (id)initWithFrame:(CGRect)frame
@@ -29,24 +27,30 @@
 	self = [super initWithFrame: frame] ;
 	if (self)
 	{
-		self.backgroundColor = [UIColor clearColor] ;
-		self.innerColor = [UIColor lightGrayColor] ;
-		self.outerColor = [UIColor lightGrayColor] ;
-		self.emptyColor = [UIColor clearColor] ;
-        self.preferredFrameHeight = kDefaultProgressBarHeight;
-		if (frame.size.width == 0.0f)
-			frame.size.width = kProgressBarWidth ;
+        [self configure];
 	}
 	return self ;
 }
 
-- (void)dealloc
+- (id)initWithCoder:(NSCoder *)aDecoder
 {
-	[innerColor release], innerColor = nil ;
-	[outerColor release], outerColor = nil ;
-	[emptyColor release], emptyColor = nil ;
-	
-	[super dealloc] ;
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        [self configure];
+    }
+    return self;
+}
+
+- (void)configure
+{
+    self.backgroundColor = [UIColor clearColor] ;
+    self.innerColor = [UIColor lightGrayColor] ;
+    self.outerColor = [UIColor lightGrayColor] ;
+    self.emptyColor = [UIColor clearColor] ;
+    self.preferredFrameHeight = kDefaultProgressBarHeight;
+    CGRect frame = self.frame;
+    if (frame.size.width == 0.0f) frame.size.width = kProgressBarWidth ;
+    self.frame = frame;
 }
 
 - (void)setProgress:(float)theProgress
@@ -57,7 +61,7 @@
 	if (theProgress < 0.0f)
 		theProgress = 0.0f ;
 	
-	progress = theProgress ;
+	_progress = theProgress ;
 	[self setNeedsDisplay] ;
 }
 
@@ -89,7 +93,7 @@
 	rect = CGRectInset(rect, 1.0f, 1.0f) ;
 	CGFloat radius = 0.5f * rect.size.height ;
     
-	[outerColor setStroke] ;
+	[_outerColor setStroke] ;
 	CGContextSetLineWidth(context, 2.0f) ;
 	
 	CGContextBeginPath(context) ;
@@ -105,7 +109,7 @@
     rect = CGRectInset(rect, 3.0f, 3.0f) ;
 	radius = 0.5f * rect.size.height ;
 	
-	[emptyColor setFill] ;
+	[_emptyColor setFill] ;
 	
 	CGContextBeginPath(context) ;
 	CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMidY(rect)) ;
@@ -120,11 +124,11 @@
 	radius = 0.5f * rect.size.height ;
 	
 	// make sure the filled rounded rectangle is not smaller than 2 times the radius
-	rect.size.width *= progress ;
+	rect.size.width *= _progress ;
 	if (rect.size.width < 2 * radius)
 		rect.size.width = 2 * radius ;
 	
-	[innerColor setFill] ;
+	[_innerColor setFill] ;
 	
 	CGContextBeginPath(context) ;
 	CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMidY(rect)) ;

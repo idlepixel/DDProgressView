@@ -13,10 +13,9 @@
 		6DA2E7EB132D6DC100985306 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6DA2E7E9132D6DC100985306 /* InfoPlist.strings */; };
 		6DA2E7EE132D6DC100985306 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2E7ED132D6DC100985306 /* main.m */; };
 		6DA2E7F1132D6DC100985306 /* DDProgressViewAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2E7F0132D6DC100985306 /* DDProgressViewAppDelegate.m */; };
-		6DA2E7F4132D6DC100985306 /* MainWindow.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA2E7F2132D6DC100985306 /* MainWindow.xib */; };
 		6DA2E7F7132D6DC100985306 /* DDProgressViewViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2E7F6132D6DC100985306 /* DDProgressViewViewController.m */; };
-		6DA2E7FA132D6DC100985306 /* DDProgressViewViewController.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6DA2E7F8132D6DC100985306 /* DDProgressViewViewController.xib */; };
 		6DA2E802132D6E2E00985306 /* DDProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6DA2E801132D6E2D00985306 /* DDProgressView.m */; };
+		A7436A0117B644F50095ED95 /* Storyboard.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = A7436A0017B644F50095ED95 /* Storyboard.storyboard */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,12 +29,11 @@
 		6DA2E7ED132D6DC100985306 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
 		6DA2E7EF132D6DC100985306 /* DDProgressViewAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDProgressViewAppDelegate.h; sourceTree = "<group>"; };
 		6DA2E7F0132D6DC100985306 /* DDProgressViewAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDProgressViewAppDelegate.m; sourceTree = "<group>"; };
-		6DA2E7F3132D6DC100985306 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/MainWindow.xib; sourceTree = "<group>"; };
 		6DA2E7F5132D6DC100985306 /* DDProgressViewViewController.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = DDProgressViewViewController.h; sourceTree = "<group>"; };
 		6DA2E7F6132D6DC100985306 /* DDProgressViewViewController.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = DDProgressViewViewController.m; sourceTree = "<group>"; };
-		6DA2E7F9132D6DC100985306 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = en.lproj/DDProgressViewViewController.xib; sourceTree = "<group>"; };
 		6DA2E800132D6E2D00985306 /* DDProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DDProgressView.h; sourceTree = "<group>"; };
 		6DA2E801132D6E2D00985306 /* DDProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DDProgressView.m; sourceTree = "<group>"; };
+		A7436A0017B644F50095ED95 /* Storyboard.storyboard */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.storyboard; path = Storyboard.storyboard; sourceTree = "<group>"; };
 		DA8635BA136EEA8000776109 /* AppKitCompatibility.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AppKitCompatibility.h; sourceTree = "<group>"; };
 		DA8635BB136EEA8000776109 /* AppKitCompatibility.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AppKitCompatibility.m; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -90,10 +88,9 @@
 				6DA2E801132D6E2D00985306 /* DDProgressView.m */,
 				6DA2E7EF132D6DC100985306 /* DDProgressViewAppDelegate.h */,
 				6DA2E7F0132D6DC100985306 /* DDProgressViewAppDelegate.m */,
-				6DA2E7F2132D6DC100985306 /* MainWindow.xib */,
 				6DA2E7F5132D6DC100985306 /* DDProgressViewViewController.h */,
 				6DA2E7F6132D6DC100985306 /* DDProgressViewViewController.m */,
-				6DA2E7F8132D6DC100985306 /* DDProgressViewViewController.xib */,
+				A7436A0017B644F50095ED95 /* Storyboard.storyboard */,
 				6DA2E7E7132D6DC100985306 /* Supporting Files */,
 			);
 			path = DDProgressView;
@@ -136,6 +133,7 @@
 		6DA2E7D3132D6DC100985306 /* Project object */ = {
 			isa = PBXProject;
 			attributes = {
+				LastUpgradeCheck = 0460;
 				ORGANIZATIONNAME = Acrossair;
 			};
 			buildConfigurationList = 6DA2E7D6132D6DC100985306 /* Build configuration list for PBXProject "DDProgressView" */;
@@ -161,8 +159,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				6DA2E7EB132D6DC100985306 /* InfoPlist.strings in Resources */,
-				6DA2E7F4132D6DC100985306 /* MainWindow.xib in Resources */,
-				6DA2E7FA132D6DC100985306 /* DDProgressViewViewController.xib in Resources */,
+				A7436A0117B644F50095ED95 /* Storyboard.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -191,22 +188,6 @@
 			name = InfoPlist.strings;
 			sourceTree = "<group>";
 		};
-		6DA2E7F2132D6DC100985306 /* MainWindow.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6DA2E7F3132D6DC100985306 /* en */,
-			);
-			name = MainWindow.xib;
-			sourceTree = "<group>";
-		};
-		6DA2E7F8132D6DC100985306 /* DDProgressViewViewController.xib */ = {
-			isa = PBXVariantGroup;
-			children = (
-				6DA2E7F9132D6DC100985306 /* en */,
-			);
-			name = DDProgressViewViewController.xib;
-			sourceTree = "<group>";
-		};
 /* End PBXVariantGroup section */
 
 /* Begin XCBuildConfiguration section */
@@ -219,10 +200,10 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				SDKROOT = iphoneos;
 			};
 			name = Debug;
@@ -233,10 +214,10 @@
 				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
 				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
 				GCC_C_LANGUAGE_STANDARD = gnu99;
-				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_VERSION = "";
 				GCC_WARN_ABOUT_RETURN_TYPE = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				IPHONEOS_DEPLOYMENT_TARGET = 6.0;
 				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
 				SDKROOT = iphoneos;
 			};
@@ -246,10 +227,12 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = NO;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DDProgressView/DDProgressView-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "DDProgressView/DDProgressView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
@@ -260,9 +243,11 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_ENABLE_OBJC_ARC = YES;
 				COPY_PHASE_STRIP = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "DDProgressView/DDProgressView-Prefix.pch";
+				GCC_VERSION = "";
 				INFOPLIST_FILE = "DDProgressView/DDProgressView-Info.plist";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				VALIDATE_PRODUCT = YES;

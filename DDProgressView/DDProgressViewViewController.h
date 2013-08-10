@@ -14,9 +14,9 @@
 {
     float   testProgress ;
     int     progressDir ;
-    
-    DDProgressView *progressView ;    
-    DDProgressView *progressView2 ;
 }
+
+@property (nonatomic, strong) IBOutlet DDProgressView *progressView;
+@property (nonatomic, strong) IBOutlet DDProgressView *progressView2;
 
 @end

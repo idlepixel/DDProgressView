@@ -11,11 +11,7 @@
 @class DDProgressViewViewController ;
 
 @interface DDProgressViewAppDelegate : NSObject <UIApplicationDelegate>
-{
-    
-}
 
-@property (nonatomic, retain) IBOutlet UIWindow *window ;
-@property (nonatomic, retain) IBOutlet DDProgressViewViewController *viewController ;
+@property (strong, nonatomic) IBOutlet UIWindow *window;
 
 @end

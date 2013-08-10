@@ -14,17 +14,13 @@
 
 @interface DDProgressView : UIView
 {
-@private
-	float progress ;
-	UIColor *innerColor ;
-	UIColor *outerColor ;
-    UIColor *emptyColor ;
+    
 }
 
-@property (nonatomic,retain) UIColor *innerColor ;
-@property (nonatomic,retain) UIColor *outerColor ;
-@property (nonatomic,retain) UIColor *emptyColor ;
-@property (nonatomic,assign) float progress ;
+@property (nonatomic,strong) UIColor *innerColor ;
+@property (nonatomic,strong) UIColor *outerColor ;
+@property (nonatomic,strong) UIColor *emptyColor ;
+@property (nonatomic,assign) CGFloat progress ;
 @property (nonatomic,assign) CGFloat preferredFrameHeight ;
 
 @end
