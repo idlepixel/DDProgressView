@@ -8,10 +8,8 @@
 
 #import "DDProgressView.h"
 
-#define kDefaultProgressBarHeight   22.0f
 #define kDefaultOuterLineWidth      2.0f
 #define kDefaultGapWidth            2.0f
-#define kProgressBarWidth           160.0f
 
 @implementation DDProgressView
 
@@ -50,13 +48,8 @@
     self.innerColor = [UIColor lightGrayColor] ;
     self.outerColor = [UIColor lightGrayColor] ;
     self.emptyColor = [UIColor clearColor] ;
-    self.preferredFrameHeight = kDefaultProgressBarHeight;
     self.outerLineWidth = kDefaultOuterLineWidth;
     self.gapWidth = kDefaultGapWidth;
-    
-    CGRect frame = self.frame;
-    if (frame.size.width == 0.0f) frame.size.width = kProgressBarWidth ;
-    self.frame = frame;
 }
 
 - (void)setOuterLineWidth:(CGFloat)outerLineWidth
@@ -86,20 +79,6 @@
         _progress = theProgress;
         [self setNeedsDisplay];
     }
-}
-
-- (void)setFrame:(CGRect)frame
-{
-	// we set the height ourselves since it is fixed
-	frame.size.height = self.preferredFrameHeight ;
-	[super setFrame: frame] ;
-}
-
-- (void)setBounds:(CGRect)bounds
-{
-	// we set the height ourselves since it is fixed
-	bounds.size.height = self.preferredFrameHeight ;
-	[super setBounds: bounds] ;
 }
 
 - (void)drawRect:(CGRect)rect

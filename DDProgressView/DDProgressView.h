@@ -23,6 +23,5 @@
 @property (nonatomic,assign) CGFloat progress ;
 @property (nonatomic,assign) CGFloat outerLineWidth ;
 @property (nonatomic,assign) CGFloat gapWidth ;
-@property (nonatomic,assign) CGFloat preferredFrameHeight ;
 
 @end
