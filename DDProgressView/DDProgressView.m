@@ -56,10 +56,7 @@
 - (void)setProgress:(float)theProgress
 {
 	// make sure the user does not try to set the progress outside of the bounds
-	if (theProgress > 1.0f)
-		theProgress = 1.0f ;
-	if (theProgress < 0.0f)
-		theProgress = 0.0f ;
+    theProgress = MAX(0.0f, MIN(1.0f, theProgress));
 	
 	_progress = theProgress ;
 	[self setNeedsDisplay] ;
