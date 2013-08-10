@@ -35,14 +35,14 @@
 	[self.view setBackgroundColor: [UIColor blackColor]] ;
 	
 	self.progressView = [[DDProgressView alloc] initWithFrame: CGRectMake(20.0f, 140.0f, self.view.bounds.size.width-40.0f, 0.0f)] ;
-	[self.progressView setOuterColor: [UIColor grayColor]] ;
-	[self.progressView setInnerColor: [UIColor lightGrayColor]] ;
+    self.progressView.innerColor = [UIColor lightGrayColor] ;
+    self.progressView.outerColor = [UIColor grayColor] ;
 	[self.view addSubview: self.progressView] ;
     
     self.progressView2 = [[DDProgressView alloc] initWithFrame: CGRectMake(20.0f, 180.0f, self.view.bounds.size.width-40.0f, 0.0f)] ;
-    [self.progressView2 setOuterColor: [UIColor clearColor]] ;
-    [self.progressView2 setInnerColor: [UIColor lightGrayColor]] ;
-    [self.progressView2 setEmptyColor: [UIColor darkGrayColor]] ;
+    self.progressView2.emptyColor = [UIColor darkGrayColor] ;
+    self.progressView2.innerColor = [UIColor lightGrayColor] ;
+    self.progressView2.outerColor = [UIColor clearColor] ;
     [self.view addSubview: self.progressView2] ;
 }
 

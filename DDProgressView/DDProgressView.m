@@ -9,6 +9,8 @@
 #import "DDProgressView.h"
 
 #define kDefaultProgressBarHeight   22.0f
+#define kDefaultOuterLineWidth      2.0f
+#define kDefaultGapWidth            2.0f
 #define kProgressBarWidth           160.0f
 
 @implementation DDProgressView
@@ -44,22 +46,46 @@
 - (void)configure
 {
     self.backgroundColor = [UIColor clearColor] ;
+    
     self.innerColor = [UIColor lightGrayColor] ;
     self.outerColor = [UIColor lightGrayColor] ;
     self.emptyColor = [UIColor clearColor] ;
     self.preferredFrameHeight = kDefaultProgressBarHeight;
+    self.outerLineWidth = kDefaultOuterLineWidth;
+    self.gapWidth = kDefaultGapWidth;
+    
     CGRect frame = self.frame;
     if (frame.size.width == 0.0f) frame.size.width = kProgressBarWidth ;
     self.frame = frame;
+}
+
+- (void)setOuterLineWidth:(CGFloat)outerLineWidth
+{
+    outerLineWidth = MAX(0.0f, outerLineWidth);
+    
+    if (outerLineWidth != _outerLineWidth) {
+        _outerLineWidth = outerLineWidth;
+        [self setNeedsDisplay];
+    }
+}
+
+- (void)setGapWidth:(CGFloat)gapWidth
+{
+    if (gapWidth != _gapWidth) {
+        _gapWidth = gapWidth;
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)setProgress:(float)theProgress
 {
 	// make sure the user does not try to set the progress outside of the bounds
     theProgress = MAX(0.0f, MIN(1.0f, theProgress));
-	
-	_progress = theProgress ;
-	[self setNeedsDisplay] ;
+    
+    if (theProgress != _progress) {
+        _progress = theProgress;
+        [self setNeedsDisplay];
+    }
 }
 
 - (void)setFrame:(CGRect)frame
@@ -86,24 +112,30 @@
 	// allow antialiasing
 	CGContextSetAllowsAntialiasing(context, TRUE) ;
 	
-	// we first draw the outter rounded rectangle
-	rect = CGRectInset(rect, 1.0f, 1.0f) ;
-	CGFloat radius = 0.5f * rect.size.height ;
+    CGFloat halfLineWidth = _outerLineWidth/2.0f;
+    CGFloat radius;
     
-	[_outerColor setStroke] ;
-	CGContextSetLineWidth(context, 2.0f) ;
-	
-	CGContextBeginPath(context) ;
-	CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMidY(rect)) ;
-	CGContextAddArcToPoint(context, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMidX(rect), CGRectGetMinY(rect), radius) ;
-	CGContextAddArcToPoint(context, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMidY(rect), radius) ;
-	CGContextAddArcToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMidX(rect), CGRectGetMaxY(rect), radius) ;
-	CGContextAddArcToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMidY(rect), radius) ;
-	CGContextClosePath(context) ;
-	CGContextDrawPath(context, kCGPathStroke) ;
+    if (halfLineWidth > 0.0f) {
+    
+        // we first draw the outter rounded rectangle
+        rect = CGRectInset(rect, halfLineWidth, halfLineWidth) ;
+        radius = 0.5f * rect.size.height ;
+        
+        [_outerColor setStroke] ;
+        CGContextSetLineWidth(context, _outerLineWidth) ;
+        
+        CGContextBeginPath(context) ;
+        CGContextMoveToPoint(context, CGRectGetMinX(rect), CGRectGetMidY(rect)) ;
+        CGContextAddArcToPoint(context, CGRectGetMinX(rect), CGRectGetMinY(rect), CGRectGetMidX(rect), CGRectGetMinY(rect), radius) ;
+        CGContextAddArcToPoint(context, CGRectGetMaxX(rect), CGRectGetMinY(rect), CGRectGetMaxX(rect), CGRectGetMidY(rect), radius) ;
+        CGContextAddArcToPoint(context, CGRectGetMaxX(rect), CGRectGetMaxY(rect), CGRectGetMidX(rect), CGRectGetMaxY(rect), radius) ;
+        CGContextAddArcToPoint(context, CGRectGetMinX(rect), CGRectGetMaxY(rect), CGRectGetMinX(rect), CGRectGetMidY(rect), radius) ;
+        CGContextClosePath(context) ;
+        CGContextDrawPath(context, kCGPathStroke) ;
+    }
     
     // draw the empty rounded rectangle (shown for the "unfilled" portions of the progress
-    rect = CGRectInset(rect, 3.0f, 3.0f) ;
+    rect = CGRectInset(rect, halfLineWidth + _gapWidth, halfLineWidth + _gapWidth) ;
 	radius = 0.5f * rect.size.height ;
 	
 	[_emptyColor setFill] ;
